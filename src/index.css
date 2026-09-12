@@ -1,0 +1,95 @@
+/* ── palette ──────────────────────────────────────── */
+
+:root {
+  --bg: #f4f7f9;
+  --ink: #172029;
+  --ink-soft: #5b6b7a;
+  --rule: #d6e0e8;
+  --accent: #2d6a9f;
+}
+
+/* ── foundation ───────────────────────────────────── */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+header,
+main {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+header { padding-top: 4rem; }
+main { padding-bottom: 6rem; }
+
+/* ── type ─────────────────────────────────────────── */
+
+h1 {
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.5rem;
+}
+
+h2 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  margin: 4rem 0 1.5rem;
+}
+
+h3 {
+  font-size: 1.125rem;
+  margin: 0 0 0.25rem;
+}
+
+p { margin: 0 0 0.75rem; }
+
+a {
+  color: inherit;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 0.2em;
+}
+
+a:hover { color: var(--accent); }
+
+/* ── layout ───────────────────────────────────────── */
+
+article { margin-bottom: 2.5rem; }
+
+.inline-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+
+.reveal {
+  opacity: 0;
+  transform: translateY(0.65rem);
+  transition: opacity 480ms ease-out, transform 480ms ease-out;
+}
+
+.reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-revealed {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
