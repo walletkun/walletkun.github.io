@@ -10,12 +10,23 @@ export const projects: Project[] = [
       "A community digital library where readers discover books, write reviews, " +
       "and run book clubs together.",
     description:
-      "Search covers roughly 28 million books through the Open Library API, with about " +
-      "five million records imported and normalized into our own PostgreSQL schema. " +
-      "Shelves, clubs, reviews, journals, and reading progress are modeled as relational " +
-      "joins over that catalog, split across around fifteen Django apps behind a Next.js " +
-      "frontend. Built with two other engineers for CISC 4900 at Brooklyn College.",
+      "Led full-stack development in a three-person team. Search covers the Open Library " +
+      "catalog, with five million records imported and normalized into our own PostgreSQL " +
+      "schema so discovery is served from local reads rather than per-request external API " +
+      "calls. Clubs, memberships, and activity are modeled as join tables over that catalog, " +
+      "keeping the read-heavy discovery path separate from user-generated data. Built for " +
+      "CISC 4900 at Brooklyn College and selected to present at Amazon PitchFest 2025.",
     techStack: ["Next.js", "Django", "PostgreSQL", "TailwindCSS", "Clerk"],
+    metrics: [
+      {
+        value: "5M",
+        label: "records imported and normalized into our own schema",
+      },
+      {
+        value: "28M",
+        label: "books searchable through the Open Library catalog",
+      },
+    ],
     githubRepo: "https://github.com/Mnajm6201/Alexandria",
   },
   {
@@ -80,15 +91,15 @@ export const projects: Project[] = [
     id: "surge",
     name: "Surge",
     summary:
-      "A Linux CLI that pulls live system metrics into one interface and uses an LLM to " +
-      "explain what they mean.",
+      "A Linux CLI that unifies system monitoring tools behind one command surface and " +
+      "explains anomalies with an LLM.",
     description:
-      "Wraps the tools you'd otherwise run separately — top, iostat, netstat, curl — behind " +
-      "one declarative command surface returning CPU, memory, disk I/O, and network metrics " +
-      "in tabular form. Metric output is shaped into configurable formats sized for an LLM " +
-      "context window, so a full system snapshot fits in a single prompt for anomaly " +
-      "explanation. Built in Python with Typer and LangChain, containerized with Docker and " +
-      "Prometheus. In active development.",
+      "Wraps top, iostat, netstat, and curl behind a single Typer-based interface, parsing " +
+      "their heterogeneous text output into one structured metrics format. Output is sized " +
+      "to fit an LLM context window so a full system snapshot goes into a single prompt, " +
+      "passed to Gemini through LangChain for anomaly explanation and remediation " +
+      "suggestions. Packaged with Docker and Compose alongside a Prometheus scrape config, " +
+      "with ruff linting enforced by GitHub Actions on every push.",
     techStack: ["Python", "Typer", "LangChain", "Docker", "Prometheus"],
     githubRepo: "https://github.com/SurgeCLI/Surge",
   },
@@ -107,6 +118,7 @@ export const education: Education[] = [
     school: "Brooklyn College",
     degreeType: "Bachelor of Science",
     major: "Computer Science",
+    minor: "Data Science",
     startDate: "Sept. 2022",
     endDate: "May 2026",
     id: "bachelor",
@@ -126,9 +138,7 @@ export const experiences: Experience[] = [
     company: "Amazon",
     startDate: "Sep 2026",
     endDate: "Dec 2026",
-    bulletPoints: [
-      "Incoming backend engineer intern to Amazon.",
-    ],
+    bulletPoints: ["Incoming backend engineer intern to Amazon."],
   },
   {
     id: "odoo",
@@ -141,6 +151,14 @@ export const experiences: Experience[] = [
       "Rewrote a single-transaction update over a 9M-row table as a batched pipeline committing 1,000 records at a time, eliminating the statement timeouts that had blocked the job in production.",
       "Traced regressions across the JavaScript client and the Python ORM to isolate causes, then wrote one-time server actions to repair the inconsistent records left behind.",
       "Patched recurring defects in Odoo's core framework and submitted the fixes upstream, where they were reviewed and merged by the R&D team.",
+    ],
+    metrics: [
+      {
+        value: "16s → 3s",
+        label:
+          "client page load, traced to stale planner statistics with EXPLAIN",
+      },
+      { value: "9M", label: "row table rewritten as a batched pipeline" },
     ],
   },
   {

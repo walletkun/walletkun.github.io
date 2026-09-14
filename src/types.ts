@@ -2,9 +2,11 @@ export interface Project {
   name: string;
   summary: string;
   description: string;
-  techStack: Array<string>;
+  techStack: string[];
   liveUrl?: string;
   githubRepo?: string;
+  images?: Image[];
+  metrics?: Metric[];
   id: string;
 }
 
@@ -13,7 +15,8 @@ export interface Experience {
   company: string;
   startDate: string;
   endDate: string;
-  bulletPoints: Array<string>;
+  bulletPoints: string[];
+  metrics?: Metric[];
   id: string;
 }
 
@@ -21,6 +24,7 @@ export interface Education {
   school: string;
   degreeType: string;
   major: string;
+  minor?: string;
   startDate: string;
   endDate: string;
   id: string;
@@ -28,7 +32,7 @@ export interface Education {
 
 export interface SkillGroup {
   label: string;
-  items: Array<string>;
+  items: string[];
   id: string;
 }
 
@@ -42,6 +46,16 @@ export interface Profile {
     bio: string;
     location: string;
     links: Link[];
+}
+
+export interface Image {
+    path: string;
+    description: string;
+}
+
+export interface Metric {
+    value: string;
+    label: string;
 }
 
 export type Section =

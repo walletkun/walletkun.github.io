@@ -1,4 +1,5 @@
 
+import { Reveal } from "./components/Reveal";
 import { profile, sections } from "./data/content";
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
       </header>
       {sections.map((section) => (
         <section key={section.kind}>
+          <Reveal>
           <h2>{section.heading}</h2>
           {section.kind === "experience" && section.items.map((experience) => (
             <article key={experience.id}>
@@ -36,6 +38,16 @@ function App() {
                 <h3>{project.name}</h3>
                 <p>{project.summary}</p>
                 <p>{project.description}</p>
+                {project.metrics && (
+                  <dl className="metrics">
+                    {project.metrics.map((metric) => (
+                      <div key={metric.value}>
+                        <dt>{metric.value}</dt>
+                        <dd>{metric.label}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
                 <ul className="inline-list">
                   {project.techStack.map((tech) => (
                     <li key={tech}>{tech}</li>
@@ -48,7 +60,7 @@ function App() {
             section.items.map((education) => (
               <article key={education.id}>
                 <h3>{education.school}</h3>
-                <p>{education.degreeType} in {education.major}</p>
+                <p>{education.degreeType} in {education.major} {education.minor && ` and minor in ${education.minor}`}</p>
                 <p>{education.startDate} - {education.endDate}</p>
               </article>
             ))}
@@ -63,7 +75,7 @@ function App() {
               </ul>
             </article>
            ))}
-          
+          </Reveal>
         </section>
       ))}
     </main>
