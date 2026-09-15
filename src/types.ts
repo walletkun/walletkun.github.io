@@ -63,3 +63,4 @@ export type Section =
   | { kind: "education"; heading: string; items: Education[] }
   | { kind: "skills"; heading: string; items: SkillGroup[] }
   | { kind: "experience"; heading: string; items: Experience[] };
+

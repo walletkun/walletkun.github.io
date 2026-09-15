@@ -1,6 +1,11 @@
-import type { Education, Experience, Profile, Project, SkillGroup } from "../types";
+import type {
+  Education,
+  Experience,
+  Profile,
+  Project,
+  SkillGroup,
+} from "../types";
 import type { Section } from "../types";
-
 
 export const projects: Project[] = [
   {
@@ -126,10 +131,20 @@ export const education: Education[] = [
 ];
 
 export const skills: SkillGroup[] = [
-    { label: "languages", items: ["Python", "Javascript", "Typescript", "Java", "C/C++", "C#"], id: "language"},
-    { label: "databases", items: ["PostgreSQL", "MySQL", "DynamoDB", "MongoDB"], id: "database"},
-    { label: "cloud", items: ["AWS", "Microsoft Azure"], id: "cloud"},
-]
+  {
+    label: "Programming Languages",
+    items: ["Python", "Javascript", "Typescript", "Java", "C", "C++", "C#"],
+    id: "language",
+  },
+  {
+    label: "Databases",
+    items: ["PostgreSQL", "MySQL", "DynamoDB", "MongoDB"],
+    id: "database",
+  },
+  { label: "Cloud & Platform", items: ["AWS", "Microsoft Azure", "Linux", "GCP"], id: "cloud" },
+  { label: "Frameworks", items: ["Django", "Springboot", "Node.js", "React", "Vue.js", "React Native", "Next.js"], id: "frameworks"},
+  { label: "Technologies", items: ["Kafka", "Docker", "Prometheus", "Redis", "Kubernetes", "Grafana", "LaTeX", "Spark"], id: "technologies"}
+];
 
 export const experiences: Experience[] = [
   {
@@ -187,23 +202,23 @@ export const experiences: Experience[] = [
 ];
 
 export const profile: Profile = {
-    name: "Fei Lin",
-    bio:
+  name: "Fei Lin",
+  bio:
     "I work on the parts of a system you don't see — database work, data pipelines, " +
     "and the kind of debugging that starts with a client ticket and ends in a patch " +
     "merged upstream. Heading to Georgia Tech for an M.S. in Computer Science, and " +
     "joining Amazon this fall as a SDE intern.",
-    location: "New York, NY",
-    links: [
-        {label: "Github", url: "https://github.com/walletkun"},
-        {label: "LinkedIn", url: "https://www.linkedin.com/in/fei-lincs"},
-        {label: "Email", url: "mailto:feilinpersonal@gmail.com"},
-    ]
+  location: "New York, NY",
+  links: [
+    { label: "Github", url: "https://github.com/walletkun" },
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/fei-lincs" },
+    { label: "Email", url: "mailto:feilinpersonal@gmail.com" },
+  ],
 };
 
 export const sections: Section[] = [
-    { kind: "experience", heading: "Experience", items: experiences},
-    { kind: "projects", heading: "Projects", items: projects},
-    { kind: "education", heading: "Education", items: education},
-    { kind: "skills", heading: "Skills", items: skills},
-]
+  { kind: "experience", heading: "Experience", items: experiences },
+  { kind: "projects", heading: "Projects", items: projects },
+  { kind: "education", heading: "Education", items: education },
+  { kind: "skills", heading: "Skills", items: skills },
+];
