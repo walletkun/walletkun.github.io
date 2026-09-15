@@ -70,12 +70,12 @@ h3 {
   margin: 0 0 0.25rem;
 }
 
-p {
-  margin: 0 0 0.75rem;
-  max-width: var(--measure);
+p,
+.points li {
+  max-width: min(var(--measure), 100%);
 }
 
-.points li { max-width: var(--measure); }
+p { margin: 0 0 0.75rem; }
 
 a {
   color: inherit;
@@ -137,6 +137,13 @@ article:last-child {
   gap: 0.5rem 1rem;
 }
 
+.inline-list img {
+  width: 28px;
+  height: 28px;
+  display: block;
+  margin: 0 auto 0.4rem;
+}
+
 /* ── metrics ──────────────────────────────────────── */
 
 .metrics {
@@ -162,6 +169,36 @@ article:last-child {
   font-size: 0.8125rem;
   line-height: 1.35;
   color: var(--ink-soft);
+}
+
+/* ── skills ───────────────────────────────────────── */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.skills-grid article {
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.skills-grid .inline-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.skills-grid .inline-list li {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 0.75rem 0.4rem;
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 1.2;
 }
 
 /* ── project images ───────────────────────────────── */
@@ -193,6 +230,8 @@ article:last-child {
   transform: none;
 }
 
+/* ── media queries — keep these last ──────────────── */
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .reveal.is-revealed {
@@ -202,7 +241,9 @@ article:last-child {
   }
 }
 
-/* ── mobile ───────────────────────────────────────── */
+@media (max-width: 60rem) {
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+}
 
 @media (max-width: 40rem) {
   header,
@@ -213,9 +254,13 @@ article:last-child {
     min-height: auto;
     padding-top: 3rem;
     padding-bottom: 2rem;
+    gap: 2rem;
   }
 
-  header img { display: none; }
+  header img {
+    max-width: 18rem;
+    margin: 0 auto;
+  }
 
   section {
     grid-template-columns: 1fr;
@@ -224,40 +269,17 @@ article:last-child {
   }
 
   section h2 { position: static; }
-}
 
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  align-items: start;
-}
+  .skills-grid article { padding: 1rem; }
 
-.skills-grid article {
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  padding: 1.5rem;
-}
+  .skills-grid .inline-list {
+    grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+  }
 
-.skills-grid .inline-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
-}
-
-.skills-grid .inline-list li {
-  border: 1px solid var(--rule);
-  border-radius: 8px;
-  padding: 0.75rem 0.4rem;
-  text-align: center;
-  font-size: 0.75rem;
-  line-height: 1.2;
-}
-
-.inline-list img {
-  width: 28px;
-  height: 28px;
-  display: block;
-  margin: 0 auto 0.4rem;
+  .metrics { gap: 1.25rem; }
 }
