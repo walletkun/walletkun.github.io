@@ -1,5 +1,9 @@
 
+import { EducationEntry } from "./components/EducationEntry";
+import { ExperienceEntry } from "./components/ExperienceEntry";
+import { ProjectCard } from "./components/ProjectCard";
 import { Reveal } from "./components/Reveal";
+import { SkillGroupList } from "./components/SkillGroupList";
 import { profile, sections } from "./data/content";
 function App() {
 
@@ -19,61 +23,22 @@ function App() {
       </header>
       {sections.map((section) => (
         <section key={section.kind}>
-          <Reveal>
           <h2>{section.heading}</h2>
+          <Reveal>
           {section.kind === "experience" && section.items.map((experience) => (
-            <article key={experience.id}>
-              <h3>{experience.company}, {experience.position}</h3>
-              <p>{experience.startDate} - {experience.endDate}</p>
-              <ul>
-                {experience.bulletPoints.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-            </article>
+            <ExperienceEntry key={experience.id} experience={experience} />
           ))}
           {section.kind === "projects" &&
             section.items.map((project) => (
-              <article key={project.id}>
-                <h3>{project.name}</h3>
-                <p>{project.summary}</p>
-                <p>{project.description}</p>
-                {project.metrics && (
-                  <dl className="metrics">
-                    {project.metrics.map((metric) => (
-                      <div key={metric.value}>
-                        <dt>{metric.value}</dt>
-                        <dd>{metric.label}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                )}
-                <ul className="inline-list">
-                  {project.techStack.map((tech) => (
-                    <li key={tech}>{tech}</li>
-                  ))}
-                </ul>
-                {project.githubRepo && <a href={project.githubRepo}>Source</a>}
-              </article>
+             <ProjectCard key={project.id} project={project} />
             ))}
           {section.kind === "education" &&
             section.items.map((education) => (
-              <article key={education.id}>
-                <h3>{education.school}</h3>
-                <p>{education.degreeType} in {education.major} {education.minor && ` and minor in ${education.minor}`}</p>
-                <p>{education.startDate} - {education.endDate}</p>
-              </article>
+              <EducationEntry key={education.id} education={education} />
             ))}
           {section.kind === "skills" &&
            section.items.map((skill) => (
-            <article key={skill.id}>
-              <h3>{skill.label}</h3>
-              <ul className="inline-list">
-                {skill.items.map((item) => (
-                  <li key={item}> {item}</li>
-                ))}
-              </ul>
-            </article>
+              <SkillGroupList key={skill.id} skill={skill} />
            ))}
           </Reveal>
         </section>

@@ -162,3 +162,26 @@ article:last-child {
     transition: none;
   }
 }
+
+section {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 2.5rem;
+  padding: 5rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+section h2 {
+  margin: 0;
+  position: sticky;
+  top: 2rem;
+  align-self: start;
+}
+
+@media (max-width: 40rem) {
+  section {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  section h2 { position: static; }
+}
